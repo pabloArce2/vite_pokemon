@@ -12,7 +12,7 @@ function App() {
   const [url, setUrl] = React.useState("https://pokeapi.co/api/v2/pokemon/1")
 
   function getPokemon(){
-    const randomNumber = Math.floor(Math.random() * 151)
+    const randomNumber = Math.floor(Math.random() * 493)
     setUrl(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
   }
 
@@ -34,8 +34,8 @@ function App() {
 
   return (
     <div className="text-center flex flex-col space-y-4 place-items-center justify-center h-screen overflow-hidden relative">
-      <img src={Bg_bottom} alt="Imagen_bottom" className="absolute -right-48 -top-2/3"/>
-      <img src={Bg_bottom} alt="Imagen_bottom" className="absolute -left-48 -bottom-2/3"/>
+      <img src={Bg_bottom} alt="Imagen_bottom" className="absolute -right-52 -top-96"/>
+      <img src={Bg_bottom} alt="Imagen_bottom" className="absolute -left-52 -bottom-96"/>
       {pokemon && <Card pokemon = {pokemon}/>}
       <button 
         onClick={getPokemon}
