@@ -34,8 +34,8 @@ function App() {
 
   return (
     <div className="text-center flex flex-col space-y-4 place-items-center justify-center h-screen overflow-hidden relative">
-      <img src={Bg_bottom} alt="Imagen_bottom" className="absolute -right-52 -top-96"/>
-      <img src={Bg_bottom} alt="Imagen_bottom" className="absolute -left-52 -bottom-96"/>
+      <img src={Bg_bottom} alt="Imagen_top" className="absolute -right-52 -top-96"/>
+      <img src={Bg_top} alt="Imagen_bottom" className="absolute -left-52 -bottom-96"/>
       {pokemon && <Card pokemon = {pokemon}/>}
       <button 
         onClick={getPokemon}

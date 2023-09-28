@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+
+}
+
+.grid-custom{
+    display: grid;
+    grid-template-columns: 
+        repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/*<div className="py-1">
+          {pokemon.types.map((typeInfo) => (
+            <Type key={`pokemon ${typeInfo.slot}`} typeInfo={typeInfo.type} />
+          ))}
+        </div>*/
