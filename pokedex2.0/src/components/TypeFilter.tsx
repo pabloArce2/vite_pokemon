@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { ChevronDown, ChevronUp } from "lucide-react"
 
 interface Type {
     name: string
@@ -39,12 +40,15 @@ export default function TypeFilter({ typesList, setSelectedTypes }: TypeFilterPr
 
     return (
         <div>
-            <p
-                className="font-semibold text-xl hover:cursor-pointer hover:bg-slate-100 py-3"
+            <div
+                className={`flex gap-3 items-center font-semibold text-xl hover:cursor-pointer hover:bg-slate-100 py-3 border p-2 ${
+                    openTypeFilter ? "bg-slate-100 rounded-t-xl" : "rounded-xl"
+                }`}
                 onClick={() => setOpenTypeFilter(!openTypeFilter)}
             >
-                Filtrar por tipo
-            </p>
+                <p>Filtrar por tipo</p>
+                {openTypeFilter ? <ChevronUp /> : <ChevronDown />}
+            </div>
 
             <div className={`${openTypeFilter ? "h-[50rem]" : "h-0 "} duration-500 overflow-hidden`}>
                 {typesList.map((type) => (

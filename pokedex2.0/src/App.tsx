@@ -48,7 +48,7 @@ function App() {
     }, [currentPokemonId])
 
     useEffect(() => {
-        const filteredPokemons = Object.values(pokemons).filter((pokemon) => {
+        const filteredPokemons = Object.values(pokemons).filter((pokemon: any) => {
             return pokemon.types.some((type: { type: { name: string } }) =>
                 selectedTypes.find((selectedType) => selectedType.name === type.type.name && selectedType.selected)
             )
