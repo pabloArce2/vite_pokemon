@@ -1,7 +1,8 @@
-import React from "react";
+interface TypeInfo {
+    name: string
+}
 
-export default function Type({ typeInfo }) {
-
+export default function Type({ typeInfo }: { typeInfo: TypeInfo }) {
     const typeClasses = {
         normal: "bg-gray-300",
         fire: "bg-red-600",
@@ -21,16 +22,14 @@ export default function Type({ typeInfo }) {
         dragon: "bg-blue-800",
         dark: "bg-black text-white",
         fairy: "bg-pink-300",
-      };
-      
-      const defaultClass = "bg-white";
-      
-      const typeClass = typeClasses[typeInfo.name] || defaultClass;
-      
+    }
+    const defaultClass = "bg-white"
 
-      return (
+    const typeClass = typeClasses[typeInfo.name] || defaultClass
+
+    return (
         <div className={`border-2 border-black border-1 px-2 rounded-md ${typeClass}`}>
-          <p className="first-letter:uppercase text-slate-900">{typeInfo.name}</p>
+            <p className="first-letter:uppercase text-slate-900">{typeInfo.name}</p>
         </div>
-      );
+    )
 }

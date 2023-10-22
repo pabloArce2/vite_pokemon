@@ -1,5 +1,4 @@
-import React from "react";
-import Type from "./Type"
+import Type from "./Type.tsx"
 
 export default function CardS({ pokemon }) {
   return (

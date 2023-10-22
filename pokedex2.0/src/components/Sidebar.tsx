@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import Pokedex from "../assets/images/pokedex.png";
 import Backwards from "../assets/icons/backwards.svg";
-import Slider from "../assets/icons/sliders-solid.svg";
 
 export default function Sidebar({ isDrawerOpen, toggleSidebar, children }) {
 
@@ -12,7 +10,7 @@ export default function Sidebar({ isDrawerOpen, toggleSidebar, children }) {
         className={`fixed top-0 left-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform shadow-2xl ${
           isDrawerOpen ? "" : "-translate-x-full"
         } bg-white dark:bg-gray-800`}
-        tabIndex="-1"
+        tabIndex={-1}
         aria-labelledby="drawer-navigation-label"
       >
         <div className="flex items-center mb-4"> 
