@@ -53,7 +53,6 @@ function App() {
                 selectedTypes.find((selectedType) => selectedType.name === type.type.name && selectedType.selected)
             )
         })
-        console.log(filteredPokemons)
         setDisplayPokemons(filteredPokemons)
     }, [pokemons, selectedTypes])
 
