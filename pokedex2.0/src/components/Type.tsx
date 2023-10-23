@@ -28,7 +28,7 @@ export default function Type({ typeInfo }: { typeInfo: TypeInfo }) {
     const typeClass = typeClasses[typeInfo.name] || defaultClass
 
     return (
-        <div className={`border-2 border-black border-1 px-2 rounded-md ${typeClass}`}>
+        <div className={`border-2 border-black border-1 px-2 rounded-md w-20 ${typeClass}`}>
             <p className="first-letter:uppercase text-slate-900">{typeInfo.name}</p>
         </div>
     )
