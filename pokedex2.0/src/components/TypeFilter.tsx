@@ -36,7 +36,6 @@ export default function TypeFilter({ typesList, setSelectedTypes }: TypeFilterPr
 
         setSelectedTypes(updatedTypes)
     }
-    console.log(openTypeFilter)
 
     return (
         <div>

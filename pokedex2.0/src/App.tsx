@@ -11,7 +11,7 @@ function App() {
     const [pokemons, setPokemons] = useState({})
     const [displayPokemons, setDisplayPokemons] = useState({})
     const [currentPokemonId, setCurrentPokemonId] = useState(1)
-    const pokemonLimit = 151
+    const pokemonLimit = 1017
     const [selectedTypes, setSelectedTypes] = useState(typesList)
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
     const toggleSidebar = () => {
@@ -45,15 +45,38 @@ function App() {
         }
 
         getPokemonData()
-    }, [currentPokemonId])
+    }, [currentPokemonId, pokemonLimit])
 
     useEffect(() => {
-        const filteredPokemons = Object.values(pokemons).filter((pokemon: any) => {
-            return pokemon.types.some((type: { type: { name: string } }) =>
-                selectedTypes.find((selectedType) => selectedType.name === type.type.name && selectedType.selected)
-            )
+        const selectedCount = selectedTypes.filter((type) => type.selected).length
+        const filteredPokemons = Object.values(pokemons).map((pokemon) => {
+            let typeMatchs = 0
+            for (let i = 0; i < pokemon.types.length; i++) {
+                if (
+                    selectedTypes.some(
+                        (selectedType) => selectedType.name === pokemon.types[i].type.name && selectedType.selected
+                    )
+                ) {
+                    typeMatchs++
+                } else {
+                    typeMatchs--
+                }
+            }
+            return { pokemon, typeMatchs }
         })
-        setDisplayPokemons(filteredPokemons)
+
+        filteredPokemons.sort((a, b) => {
+            if (a.typeMatchs === b.typeMatchs) {
+                return a.pokemon.types.length - b.pokemon.types.length
+            }
+            return b.typeMatchs - a.typeMatchs
+        })
+
+        const sortedPokemons = filteredPokemons.map((entry) => entry.pokemon)
+
+        if (selectedCount === selectedTypes.length) setDisplayPokemons(pokemons)
+        else if (selectedCount === 0) setDisplayPokemons({})
+        else setDisplayPokemons(sortedPokemons)
     }, [pokemons, selectedTypes])
 
     return (
@@ -63,7 +86,7 @@ function App() {
                 <TypeFilter typesList={selectedTypes} setSelectedTypes={setSelectedTypes} />
             </Sidebar>
 
-            <div className="mt-32">
+            <div className={`mt-32 duration-200 ${isDrawerOpen ? "ml-72" : ""}`}>
                 <div className="grid-custom gap-10 px-24 py-12 text-center">
                     {Object.values(displayPokemons).length > 0 ? (
                         Object.values(displayPokemons).map((pokemon, index) => (
